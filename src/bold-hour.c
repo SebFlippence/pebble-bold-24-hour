@@ -8,7 +8,7 @@
    This watch's load/unload code is mostly taken from the big_time watchface which has to
    load/unload images as necessary. The same is true for bold-hour.
 
-   Author: Jon Eisen
+   Author: Jon Eisen (24 hour version Seb Flippence)
 
  */
 
@@ -20,7 +20,7 @@
 #define MY_UUID { 0xA3, 0x33, 0x71, 0xE8, 0x33, 0xCB, 0x42, 0xD2, 0x8E, 0x91, 0xC6, 0x6F, 0x26, 0x72, 0xE5, 0xF2 }
 PBL_APP_INFO(MY_UUID,
              "Bold 24 Hour", "Seb Flippence", // Original by Jon Eisen
-             1, 2, /* App version */
+             2, 0, /* App version */
              RESOURCE_ID_IMAGE_MENU_ICON,
              APP_INFO_WATCH_FACE);
 
