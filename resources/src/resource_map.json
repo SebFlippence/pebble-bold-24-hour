@@ -18,6 +18,12 @@
 
         {
         "type": "png",
+        "defName": "IMAGE_NUM_0",
+        "file": "images/bold-hour-0-inv.png"
+        },
+
+        {
+        "type": "png",
         "defName": "IMAGE_NUM_1",
         "file": "images/bold-hour-1-inv.png"
         },
@@ -86,7 +92,72 @@
         "type": "png",
         "defName": "IMAGE_NUM_12",
         "file": "images/bold-hour-12-inv.png"
-        }
+        },
 
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_13",
+        "file": "images/bold-hour-13-inv.png"
+        },
+
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_14",
+        "file": "images/bold-hour-14-inv.png"
+        },
+
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_15",
+        "file": "images/bold-hour-15-inv.png"
+        },
+
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_16",
+        "file": "images/bold-hour-16-inv.png"
+        },
+
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_17",
+        "file": "images/bold-hour-17-inv.png"
+        },
+
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_18",
+        "file": "images/bold-hour-18-inv.png"
+        },
+
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_19",
+        "file": "images/bold-hour-19-inv.png"
+        },
+
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_20",
+        "file": "images/bold-hour-20-inv.png"
+        },
+
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_21",
+        "file": "images/bold-hour-21-inv.png"
+        },
+
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_22",
+        "file": "images/bold-hour-22-inv.png"
+        },
+
+        {
+        "type": "png",
+        "defName": "IMAGE_NUM_23",
+        "file": "images/bold-hour-23-inv.png"
+        }
     ]
 }
