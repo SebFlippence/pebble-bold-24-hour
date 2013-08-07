@@ -1,14 +1,16 @@
-# bold-hour
+# bold-24-hour
 
-This is a [pebble](http://getpebble.com) watchface which displays a large, watch-face-sized, bold hour and a smaller minute number in the center of the hour.
+This is a [pebble](http://getpebble.com) watchface which displays a large, watch-face-sized, bold hour and a smaller minute number in the center of the hour. Works in 12 and 24 hour modes (use pebble settings to change).
+
+This is a 24 hour fork of the 12 hour version by [yanatan16](https://github.com/yanatan16/pebble-bold-hour).
 
 _Note_: Last built with version 1.12
 
 ## My Pebble Faces
 
 Get and Vote for this face on mypebblefaces.com:
-- [white numbers](http://mypebblefaces.com/view?fID=700&aName=yanatan16&pageTitle=Bold+Hour+%28White%29&auID=598)
-- [black numbers](http://mypebblefaces.com/view?fID=698&aName=yanatan16&pageTitle=Bold+Hour+%28Black%29&auID=598)
+- [white numbers](http://www.mypebblefaces.com/view?fID=5426&aName=seb&pageTitle=Bold+24+Hour+%28White%29&auID=6482)
+- [black numbers](http://www.mypebblefaces.com/view?fID=5426&aName=seb&pageTitle=Bold+24+Hour+%28White%29&auID=6482)
 
 ## How to build
 
@@ -16,15 +18,15 @@ This watchface was compiled with Android SDK release 1.12. Make sure you setup t
 
 ```
 cd ~/pebble-dev/PebbleSDK-1.12/Pebble/watches
-git clone http://github.com/yanatan16/pebble-bold-hour bold-hour
-../tools/create_pebble_project.py --symlink-only ../sdk bold-hour
+git clone http://github.com/sebflipper/pebble-bold-24-hour bold-24-hour
+../tools/create_pebble_project.py --symlink-only ../sdk bold-24-hour
 ```
 
 To set it up for white numbers make sure the `#define LIGHT_WATCHFACE` is _not_ commented, and make sure all the images in the resoure map have the `-inv.png` on the end, as in `bold-hour-5-inv.png`. For black numbers, do the opposite.
 
 ## License
 
-Copyright (c) 2013 Jon Eisen
+Copyright (c) 2013 Seb Flippence, Jon Eisen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
