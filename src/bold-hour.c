@@ -19,7 +19,7 @@
 
 #define MY_UUID { 0xA3, 0x33, 0x71, 0xE8, 0x33, 0xCB, 0x42, 0xD2, 0x8E, 0x91, 0xC6, 0x6F, 0x26, 0x72, 0xE5, 0xF2 }
 PBL_APP_INFO(MY_UUID,
-             "Bold Hour", "Jon Eisen",
+             "Bold 24 Hour", "Seb Flippence", // Original by Jon Eisen
              1, 2, /* App version */
              RESOURCE_ID_IMAGE_MENU_ICON,
              APP_INFO_WATCH_FACE);
@@ -44,15 +44,18 @@ BmpContainer imageContainer;
   #define BKGD_COLOR GColorWhite
 #endif
 
-#define NUMBER_OF_IMAGES 12
+#define NUMBER_OF_IMAGES 24
 
 // These are all of our images. Each is the entire screen in size.
 const int IMAGE_RESOURCE_IDS[NUMBER_OF_IMAGES] = {
-  RESOURCE_ID_IMAGE_NUM_1, RESOURCE_ID_IMAGE_NUM_2,
+  RESOURCE_ID_IMAGE_NUM_0, RESOURCE_ID_IMAGE_NUM_1, RESOURCE_ID_IMAGE_NUM_2,
   RESOURCE_ID_IMAGE_NUM_3, RESOURCE_ID_IMAGE_NUM_4, RESOURCE_ID_IMAGE_NUM_5,
   RESOURCE_ID_IMAGE_NUM_6, RESOURCE_ID_IMAGE_NUM_7, RESOURCE_ID_IMAGE_NUM_8,
   RESOURCE_ID_IMAGE_NUM_9, RESOURCE_ID_IMAGE_NUM_10, RESOURCE_ID_IMAGE_NUM_11,
-  RESOURCE_ID_IMAGE_NUM_12
+  RESOURCE_ID_IMAGE_NUM_12, RESOURCE_ID_IMAGE_NUM_13, RESOURCE_ID_IMAGE_NUM_14,
+  RESOURCE_ID_IMAGE_NUM_15, RESOURCE_ID_IMAGE_NUM_16, RESOURCE_ID_IMAGE_NUM_17,
+  RESOURCE_ID_IMAGE_NUM_18, RESOURCE_ID_IMAGE_NUM_19, RESOURCE_ID_IMAGE_NUM_20,
+  RESOURCE_ID_IMAGE_NUM_21, RESOURCE_ID_IMAGE_NUM_22, RESOURCE_ID_IMAGE_NUM_23
 };
 
 
@@ -65,12 +68,12 @@ void load_digit_image(int digit_value) {
 
    */
 
-  if ((digit_value < 1) || (digit_value > 12)) {
+  if ((digit_value < 0) || (digit_value > 23)) {
     return;
   }
 
   if (image_state == UNINITTED) {
-    bmp_init_container(IMAGE_RESOURCE_IDS[digit_value-1], &imageContainer);
+    bmp_init_container(IMAGE_RESOURCE_IDS[digit_value], &imageContainer);
     imageContainer.layer.layer.frame.origin.x = 0;
     imageContainer.layer.layer.frame.origin.y = 0;
     layer_add_child(&imageContainer.layer.layer, &minuteLayer.layer);
@@ -106,16 +109,15 @@ void reinit_text_layer(unsigned short horiz) {
 }
 
 void display_time(PblTm * tick_time) {
+  unsigned short hour = tick_time->tm_hour;
 
-  // 24 hour clock not supported
-  // if (clock_is_24h_style()) {
-  //   return hour;
-  // }
+  // Handle 12 hour
+  if (!clock_is_24h_style()) {
+    hour = hour % 12;
 
-  unsigned short hour = tick_time->tm_hour % 12;
-
-  // Converts "0" to "12"
-  hour = hour ? hour : 12;
+    // Converts "0" to "12"
+    hour = hour ? hour : 12;
+  }
 
   // Only do memory unload/load if necessary
   if (image_state != hour) {
@@ -132,6 +134,12 @@ void display_time(PblTm * tick_time) {
 
   if (hour == 10 || hour == 12) {
     reinit_text_layer(70 + 3*n1s);
+  } else if (hour >= 13 && hour <= 19) {
+    reinit_text_layer(72 + 3*n1s);
+  } else if (hour == 20 || hour == 22 || hour == 23) {
+    reinit_text_layer(19 + 3*n1s);
+  } else if (hour == 21) {
+    reinit_text_layer(32 + 3*n1s);
   } else {
     reinit_text_layer(53 + 3*n1s);
   }
