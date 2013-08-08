@@ -126,25 +126,16 @@ void display_time(PblTm * tick_time) {
   }
 
   // Show minute
-  static char text[] = "00";
+  static char mins[] = "00";
 
-  string_format_time(text, sizeof(text), "%M", tick_time);
+  string_format_time(mins, sizeof(mins), "%M", tick_time);
 
-  unsigned short n1s = (text[0]=='1') + (text[1]=='1');
-
-  if (hour == 10 || hour == 12) {
-    reinit_text_layer(70 + 3*n1s);
-  } else if (hour >= 13 && hour <= 19) {
-    reinit_text_layer(72 + 3*n1s);
-  } else if (hour == 20 || hour == 22 || hour == 23) {
-    reinit_text_layer(19 + 3*n1s);
-  } else if (hour == 21) {
-    reinit_text_layer(32 + 3*n1s);
-  } else {
-    reinit_text_layer(53 + 3*n1s);
+  unsigned short n1s = (mins[0]=='1') + (mins[1]=='1');
+  if (hour == 1) {
+    text_layer_set_text_color(&minuteLayer, GColorWhite);
   }
-
-  text_layer_set_text(&minuteLayer, text);
+  reinit_text_layer(106 + 3*n1s);
+  text_layer_set_text(&minuteLayer, mins);
 }
 
 
@@ -164,10 +155,10 @@ void handle_init(AppContextRef ctx) {
 
   resource_init_current_app(&APP_RESOURCES);
 
-  minuteFrame = GRect(53, 23, 40, 40);
+  minuteFrame = GRect(106, 128, 40, 40);
 
   text_layer_init(&minuteLayer, window.layer.frame);
-  text_layer_set_text_color(&minuteLayer, TEXT_COLOR);
+  text_layer_set_text_color(&minuteLayer, GColorBlack);
   text_layer_set_background_color(&minuteLayer, GColorClear);
   text_layer_set_font(&minuteLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MINUTE_38)));
   layer_set_frame(&minuteLayer.layer, minuteFrame);
